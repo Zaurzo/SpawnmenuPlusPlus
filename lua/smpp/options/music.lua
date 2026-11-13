@@ -4,6 +4,8 @@
 local Music = SpawnmenuPP.Option:New('music')
 
 Music.Name = 'Music'
+Music.Path = 'sound/smpp/music/'
+
 Music.ConVars = {
     enabled = 0,
     volume = 1,
@@ -19,7 +21,7 @@ local audio_channel ---@type IGModAudioChannel
 local function get_songs()
     local songs = {}
 
-    local files = file.Find('data_static/smpp/music/*', 'GAME')
+    local files = file.Find(Music.Path .. '*', 'GAME')
     local valid_extensions = {
         wav = true,
         mp3 = true,
@@ -44,7 +46,7 @@ function Music:Play()
     local wait = (self:GetFloat('wait') or 0) + 0.1
 
     timer.Create('smpp_start_song', wait, 1, function()
-        local path = 'data_static/smpp/music/' .. self:GetString('song')
+        local path = self.Path .. self:GetString('song')
 
         sound.PlayFile(path, 'noblock', function(channel)
             local vol = 0
