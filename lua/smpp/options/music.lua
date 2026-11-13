@@ -43,7 +43,7 @@ end
 function Music:Play()
     if not is_spawnmenu_open or not self:GetBool('enabled') then return end
 
-    local wait = (self:GetFloat('wait') or 0) + 0.1
+    local wait = (self:GetFloat('wait') or 0) + 0.25
 
     timer.Create('smpp_start_song', wait, 1, function()
         local path = self.Path .. self:GetString('song')
