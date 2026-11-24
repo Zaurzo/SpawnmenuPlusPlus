@@ -1,5 +1,3 @@
----@realm client
-
 SpawnmenuPP.Option = SpawnmenuPP.Option or {}
 
 ---@class SMPP.Option

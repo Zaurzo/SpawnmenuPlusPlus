@@ -1,5 +1,3 @@
----@realm server
-
 util.AddNetworkString('smpp_spawn_as_npc')
 
 net.Receive('smpp_spawn_as_npc', function(len, ply)

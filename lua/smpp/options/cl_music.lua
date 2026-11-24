@@ -1,5 +1,3 @@
----@realm client
-
 ---@class SMPP.Options.Music : SMPP.Option
 local Music = SpawnmenuPP.Option:New('music')
 
