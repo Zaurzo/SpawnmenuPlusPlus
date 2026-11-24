@@ -118,15 +118,7 @@ end
 
 -- Load options
 
-local files, folders = file.Find('lua/smpp/options/*', 'GAME')
-
-for _, file_name in ipairs(files) do
-    include('smpp/options/' .. file_name)
-end
-
-for _, folder in ipairs(folders) do
-    include('smpp/options/' .. folder .. '/init.lua')
-end
+SpawnmenuPP:LoadDir('options')
 
 hook.Add('AddToolMenuTabs', 'myHookClass', function()
     spawnmenu.AddToolTab('Options', 'Options', 'icon16/cog.png')
