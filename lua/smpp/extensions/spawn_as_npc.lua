@@ -1,4 +1,5 @@
 local valve_biped_models = {}
+local is_friendly = true
 
 local function is_model_valve_biped(mdl)
     local is_biped = valve_biped_models[mdl]
@@ -40,7 +41,7 @@ local function create_option(label, menu, on_changed)
     return opt
 end
 
-local function set_npc(mdl, is_friendly, weapon)
+local function set_npc(mdl, weapon)
     RunConsoleCommand('gmod_tool', 'creator')
     RunConsoleCommand('creator_type', '2')
     RunConsoleCommand('creator_name', 'smpp_npc_' .. LocalPlayer():EntIndex())
@@ -66,27 +67,22 @@ hook.Add('SpawnmenuIconMenuOpen', 'smpp_spawn_as_npc', function(menu, icon, cont
     local options = {}
 
     local function on_changed(opt, state)
-        local is_friendly = opt.Label == 'Friendly'
-
-        if is_friendly then
-            options[2]:SetChecked(false)
-        else
-            options[1]:SetChecked(false)
-        end
+        is_friendly = opt.Label == 'Friendly'
+        options[is_friendly and 2 or 1]:SetChecked(false)
         
         opt:SetChecked(true)
 
-        set_npc(mdl, is_friendly)
+        set_npc(mdl)
     end 
 
     options[1] = create_option('Friendly', menu2, on_changed)
     options[2] = create_option('Hostile', menu2, on_changed)
-    options[1]:SetChecked(true)
+    options[is_friendly and 1 or 2]:SetChecked(true)
 
     menu2:AddSpacer()
 
     menu2:AddOption('None', function()
-        set_npc(mdl, options[1]:GetChecked(), '')
+        set_npc(mdl, '')
     end):SetIcon('icon16/cross.png')
 
     menu2:AddSpacer()
@@ -99,7 +95,7 @@ hook.Add('SpawnmenuIconMenuOpen', 'smpp_spawn_as_npc', function(menu, icon, cont
         local option_icon = icons[wep.category or ''] or 'icon16/gun.png'
 
         menu2:AddOption(name, function()
-            set_npc(mdl, options[1]:GetChecked(), wep.class)
+            set_npc(mdl, wep.class)
         end):SetIcon(option_icon)
     end
 end)
