@@ -54,7 +54,7 @@ end
 
 ---@param menu DMenu
 ---@param icon SpawnIcon
-hook.Add('SpawnmenuIconMenuOpen', 'identifier', function(menu, icon, content_type)
+hook.Add('SpawnmenuIconMenuOpen', 'smpp_spawn_as_npc', function(menu, icon, content_type)
     if content_type ~= 'model' then return end
 
     local mdl = icon:GetModelName():lower()
