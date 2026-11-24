@@ -91,8 +91,8 @@ hook.Add('SpawnmenuIconMenuOpen', 'smpp_spawn_as_npc', function(menu, icon, cont
 
     menu2:AddSpacer()
 
-    local icons = list.Get('ContentCategoryIcons')
-    local npc_weapons = list.Get('NPCUsableWeapons')
+    local icons = list.GetForEdit('ContentCategoryIcons')
+    local npc_weapons = list.GetForEdit('NPCUsableWeapons')
 
     for _, wep in pairs(npc_weapons) do
         local name = language.GetPhrase(wep.title or wep.class)
