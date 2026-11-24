@@ -43,7 +43,7 @@ end
 local function set_npc(mdl, is_friendly, weapon)
     RunConsoleCommand('gmod_tool', 'creator')
     RunConsoleCommand('creator_type', '2')
-    RunConsoleCommand('creator_name', 'smpp_npc')
+    RunConsoleCommand('creator_name', 'smpp_npc_' .. LocalPlayer():EntIndex())
     RunConsoleCommand('creator_override', weapon or '')
 
     net.Start('smpp_spawn_as_npc')

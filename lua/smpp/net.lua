@@ -2,7 +2,7 @@
 
 util.AddNetworkString('smpp_spawn_as_npc')
 
-net.Receive('smpp_spawn_as_npc', function()
+net.Receive('smpp_spawn_as_npc', function(len, ply)
     local mdl = net.ReadString()
     local friendly = net.ReadBool()
 
@@ -17,5 +17,5 @@ net.Receive('smpp_spawn_as_npc', function()
         data.KeyValues = { Hostile = '1' }
     end
 
-    list.Set('NPC', 'smpp_npc', data)
+    list.Set('NPC', 'smpp_npc_' .. ply:EntIndex(), data)
 end)
