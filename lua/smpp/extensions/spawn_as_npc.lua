@@ -1,19 +1,5 @@
 local valve_biped_models = {}
 
-local required_bones = {
-    'ValveBiped.Bip01_Pelvis',
-    'ValveBiped.Bip01_Spine',
-    'ValveBiped.Bip01_Head1',
-    'ValveBiped.Bip01_R_Hand',
-    'ValveBiped.Bip01_L_Hand',
-}
-
-local required_acts = {
-    ACT_IDLE, 
-    ACT_WALK, 
-    ACT_RUN
-}
-
 local function is_model_valve_biped(mdl)
     local is_biped = valve_biped_models[mdl]
 
